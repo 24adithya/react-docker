@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+// import {Provider} from react-redux;
+// import appStore from './appStore.js'
+import AppContents from "./AppContents";
+import { ThemeProvider } from "@mui/material/styles";
+import { mainTheme } from "./styles/mainStyles";
+import AppContext, { AppProvider } from "./AppContext";
 
-function App() {
+const App = () => {
+  // const { data } = useData();
+
+  // // This useEffect will ensure that loading state is set to false once data is available
+  // useEffect(() => {
+  //   if (data.length > 0) {
+  //     setLoading(false);
+  //   }
+  // }, [data]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={mainTheme}>
+      <AppProvider>
+        <AppContents />
+        {/* {data} */}
+        {/* <Provider store={appStore}> */}
+        {/* <AppContents /> */}
+        {/* </Provider> */}
+      </AppProvider>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;

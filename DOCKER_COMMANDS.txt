@@ -1,0 +1,17 @@
+sudo docker build -t my-react-docker .
+sudo docker run -d -p 8081:80  my-react-docker
+
+# If images uploaded to docker hub
+
+# pull images from docker hub
+docker pull 24adithya/my-react-docker:latest
+docker pull 24adithya/my-spring-docker:latest
+
+# run spring boot application 
+docker run -d -p 8080:8080 24adithya/my-spring-docker:latest
+# assuming it generates a container name `flamboyant_almeida`
+
+# run react application 
+docker run -d -p 8081:80 --link flamboyant_almeida:backend 24adithya/my-spring-docker:latest
+
+# launch application on localhost:8081 and enter value and test
